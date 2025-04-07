@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC  
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"  
+"D:\Study\Nouveau dossier (3)/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="model.Occuper" table="OCCUPER">
+        <composite-id name="id" class="model.OccuperId">
+            <key-property name="codeprof" column="codeprof"/>
+            <key-property name="codesal" column="codesal"/>
+        </composite-id>
+
+        <many-to-one name="user" class="model.User" insert="false" update="false">
+            <column name="codeprof"/>
+        </many-to-one>
+
+        <many-to-one name="salle" class="model.Salle" insert="false" update="false">
+            <column name="codesal"/>
+        </many-to-one>
+
+        <property name="date" column="date" type="date"/>
+    </class>
+</hibernate-mapping>

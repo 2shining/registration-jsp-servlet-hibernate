@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC  
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"  
+"D:\Study\Nouveau dossier (3)/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="model.Salle" table="SALLE">  <!-- Mapper à la table SALLE -->
+
+        <id name="codesal" column="codesal" type="int">
+            <generator class="increment"/>
+        </id>
+
+        <property name="designation" column="designation" type="string"/>
+        
+        <set name="occupations" cascade="all, delete-orphan" inverse="true">
+            <key column="codesal"/>
+            <one-to-many class="model.Occuper"/>
+        </set>
+
+    </class>
+</hibernate-mapping>
